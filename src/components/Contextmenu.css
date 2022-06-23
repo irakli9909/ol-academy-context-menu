@@ -1,0 +1,16 @@
+
+.context {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+button {
+    background-color: blueviolet;
+    height: 50%;
+    border-radius: 19px;
+}
+

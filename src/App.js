@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import ContextMenu from './components/ContextMenu';
+import {useState} from 'react'
+
 
 function App() {
+  const [open, setOpen] = useState(false)
+  const [posX,setPosX] = useState()
+  const [posY,setPosY] = useState()
+
+  const [color, setColor] = useState()
+
+  
+
+  const context = (event) => {
+    setOpen(true)
+    setPosX(event.pageX)
+    setPosY(event.pageY)  
+  }
+  oncontextmenu=(e) => {
+    e.preventDefault()  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ul className='ulcontainer'>
+        <li onContextMenu={context} style={{backgroundColor:'red'}}>Javacript</li>
+        <li onContextMenu={context} style={{backgroundColor:'green'}}>HTML</li>
+        <li onContextMenu={context} style={{backgroundColor:'pink'}}>css</li>
+      </ul>
+      { open && <ContextMenu posX={posX} posY={posY} setOpen={setOpen}/> }
+      
     </div>
+    
   );
 }
 
